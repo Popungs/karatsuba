@@ -48,13 +48,6 @@ int main() {
         int y = b[i] -'0';
         secondVal.push_back(y);
     }
-    /*
-    for (auto i = firstVal.begin(); i != firstVal.end(); ++i) {
-        cout << *i << endl;
-    }
-    */
-    // check if vectors are formed correctly
-    //
 
 
     // addition
@@ -397,19 +390,6 @@ vector<int> karatsuba(vector<int>& a, vector<int>& b) {
             }
 
 
-            // debugging stuff
-            //
-
-            /*
-            string azero = vecStr(a0);
-            cout << "a0 vec : "  << azero << endl;
-            string aone = vecStr(a1);
-            cout << "a1 vec : " << aone << endl;
-            string bzero = vecStr(b0);
-            cout << "b0 vec : " << bzero << endl;
-            string bone = vecStr(b1);
-            cout << "b1 vec : " << bone << endl;
-            */
 
 
 
@@ -418,12 +398,7 @@ vector<int> karatsuba(vector<int>& a, vector<int>& b) {
 
         c2 = karatsuba(a1, b1);
 
-        /*
-        for (auto i = c2.begin(); i != c2.end(); ++i) {
-            while (*c2.begin() == 0)
-                c2.erase(c2.begin());
-        } */
-
+   
         string ctwo = vecStr(c2);
 
         // cout << "c2 contains : " << ctwo << ": which is karatsuba (a1, b1)  " << endl;
@@ -433,32 +408,22 @@ vector<int> karatsuba(vector<int>& a, vector<int>& b) {
         string czero = vecStr(c0);
         // cout << "c0 contains : " << czero << ": which is karatsuba (a0, b0) " << endl;
 
-    // aTemp = addition(a0,a1);
-
-
-    // bTemp = addition(b0,b1);
-
-    // stuff
-    //
-    //  c1 = karatsuba ( a0 + a1 , b0 + b1 )
-
+  
 
 
         aTemp = addition(a0,a1);
 
         string aytemp = vecStr(aTemp);
-        //cout << "a0 + a1 : " << aytemp << endl;
-        //cout << " " << endl;
+   
 
         bTemp = addition(b0,b1);
 
-        //cout << " " << endl;
+
 
         string beetemp = vecStr(bTemp);
-        //cout << "b0 + b1 : " << beetemp << endl;
 
 
-        //cout << " " << endl;
+    
         midTemp = karatsuba(aTemp,bTemp);
 
         string meedteemp = vecStr(midTemp);
@@ -475,20 +440,6 @@ vector<int> karatsuba(vector<int>& a, vector<int>& b) {
 
         c1 = subtraction(midTemp2, c0);
 
-        //cout << " " << endl;
-
-
-        //cout << " " << endl;
-
-        // c1 =  subtraction (midTemp2 = subtraction (midTemp =  karatsuba(aTemp = addition(a0,a1), bTemp = addition(b0,b1)), c2), c0);
-
-
-
-   // fc1 = subtraction(c1,c0);
-
-   //  fc1 = subtraction(fc1,c2);
-
-   //  c1 = subtraction(temp,c0);
         for (int i = 0; i < 2*m; ++i) {
             // cout << i << " i " << endl;
             c2.push_back(0);
@@ -501,25 +452,15 @@ vector<int> karatsuba(vector<int>& a, vector<int>& b) {
         }
 
         string ceeone = vecStr(c1);
-        //cout << "c1 contains : " << ceeone << " which is (midTemp - (c2* 10^(2m)) - c0) * 10^(m)" << endl;
-
-        //cout << "c2 updated with 10 to the power of " << to_string(2*m) << " which is (2*m) " << endl;
-
 
 
         res = addition(c2,c1);
         string resS = vecStr(res);
-        //cout << "c2 + c1 : " << resS << endl;
+
 
         res = addition(res,c0);
         string resS2 = vecStr(res);
-        //cout << "c2 + c1 + c0 : " << resS2 << endl;
-
-        /*
-        while (*res.begin() == 0) {
-            res.erase(res.begin());
-        }
-        */ 
+   
         return res;
     }
 
